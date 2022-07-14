@@ -8,7 +8,16 @@ POST http://localhost:3000/api/auth/send-otp
 content-type: application/json
 
 {
-    "email": "avenkatashiva@gmail.com"
+    "email": "divyajanga55@gmail.com"
 }
 
 
+###
+
+POST http://localhost:3000/api/auth/verify-otp
+content-type: application/json
+
+{
+    "email": "divyajanga55@gmail.com",
+    "otp": "932755"
+}
