@@ -19,5 +19,58 @@ content-type: application/json
 
 {
     "email": "divyajanga55@gmail.com",
-    "otp": "810006"
+    "otp": "203439"
+}
+
+###
+
+POST http://localhost:3000/api/auth/signup
+content-type: application/json
+
+{
+    "email": "divyajanga55@gmail.com",
+    "name": "Divya",
+    "userType": "student",
+    "password": "divya448",
+    "id": "O170448"
+}
+
+###
+
+
+POST http://localhost:3000/api/auth/update-profile
+content-type: application/json
+
+{
+    "email": "divyajanga55@gmail.com",
+    "mobile": "80234223234",
+    "cls": "cse5",
+    "year": "E4",
+    "paName": "my father", 
+    "paMobile": "82934234234", 
+    "address" : "my adress"
+}
+
+
+###
+
+
+POST http://localhost:3000/api/student/create-leave
+content-type: application/json
+
+{
+    "name": "Buddi",
+    "id":"O170448",
+    "gender":"F",
+    "year":"E4",
+    "className": "T6",
+    "dorm": "G20",
+    "outpassType": "emergency",
+    "reason": "Stomach pain",
+    "caretaker": "caretaker-1@gmail.com",
+    "warden": "warden-1@gmail.com",
+    "date": "06-08-2011",
+    "stuMobile": "9823889122",
+    "prtMobile": "8123123923",
+    "numDays": "1"
 }

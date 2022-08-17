@@ -13,7 +13,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to  Quickout
+          Welcome to  Quick OutPass
         </h1>
 
         <p className={styles.description}>
