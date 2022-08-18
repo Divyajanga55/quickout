@@ -5,10 +5,10 @@ import { generateOtp } from '../../../utils/helpers';
 import { saveOtpOnDB } from '../../../api-helper/auth/send-otp';
 
 async function handler(req, res) {
-  const email = req.body.email; //to take email from frontend
-  const otp = generateOtp(); // genetare 6 dgit otp and store in otp
-  try {       
-    await saveOtpOnDB({ email: email, otp: otp });  // taken fron auth helpers
+  const email = req.body.email;
+  const otp = generateOtp();
+  try {
+    await saveOtpOnDB({ email: email, otp: otp });
     const info = await sendMail({ email: email, otp: otp });
     if (info) {
       return res.status(200).json({ message: 'OTP sent', status: true });
