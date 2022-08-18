@@ -8,7 +8,7 @@ POST http://localhost:3000/api/auth/send-otp
 content-type: application/json
 
 {
-    "email": "divyajanga55@gmail.com"
+    "email": "avenkatashiva@gmail.com"
 }
 
 ###
@@ -18,7 +18,7 @@ content-type: application/json
 
 {
     "email": "avenkatashiva@gmail.com",
-    "otp": "986480"
+    "otp": "177009"
 }
 
 
