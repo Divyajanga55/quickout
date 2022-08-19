@@ -2,8 +2,9 @@ import { onlyPost } from '../../../utils/backend-helpers';
 import { getOtpFromDB } from '../../../api-helper/auth/verify-otp';
 
 async function handler(req, res) {
-  const email = req.body.email;
-  const otp = req.body.otp;
+  const body = JSON.parse(req.body);
+  const email = body.email;
+  const otp = body.otp;
   try {
     const savedOtp = await getOtpFromDB({ email });
     if (savedOtp === false) {

@@ -5,7 +5,8 @@ import { generateOtp } from '../../../utils/helpers';
 import { saveOtpOnDB } from '../../../api-helper/auth/send-otp';
 
 async function handler(req, res) {
-  const email = req.body.email;
+  const body = JSON.parse(req.body);
+  const email = body.email;
   const otp = generateOtp();
   try {
     await saveOtpOnDB({ email: email, otp: otp });

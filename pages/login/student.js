@@ -1,6 +1,40 @@
+import { useEffect, useState } from 'react';
 import { LoginStyles } from '../styles';
+import { postReqAsync } from '../../helpers/api-helpers';
 
 function StudentLogin() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [err, setErr] = useState('');
+  const [loading, setLoading] = useState(false);
+  const handleLogin = () => {
+    if (!email) {
+      return setErr('Enter email');
+    }
+    if (!password) {
+      return setErr('Enter password');
+    }
+    setLoading(true);
+    postReqAsync('/api/auth/signin', { email, password })
+      .then((json) => {
+        if (json.message === 'Success') {
+          setErr('Login successfull');
+          setTimeout(() => {
+            window.open('/student', '_self');
+          }, 500);
+        } else {
+          setLoading(false);
+          setErr(json.message || 'something went wrong');
+        }
+      })
+      .catch((err) => {
+        setLoading(false);
+        setErr('something went wrong');
+      });
+  };
+  useEffect(() => {
+    setErr('');
+  }, []);
   return (
     <>
       <LoginStyles />
@@ -10,7 +44,7 @@ function StudentLogin() {
           alt="login"
           className="center"
         />
-        <p style={{textAlign: "center", fontSize: "3rem"}}>Student Login</p>
+        <p style={{ textAlign: 'center', fontSize: '3rem' }}>Student Login</p>
         <table>
           <tbody>
             <tr>
@@ -38,6 +72,7 @@ function StudentLogin() {
                   }}
                   placeholder="Enter your name"
                   name="username"
+                  onChange={(event) => setEmail(event.target.value)}
                 />
               </td>
             </tr>
@@ -65,10 +100,11 @@ function StudentLogin() {
                     fontSize: '20px',
                   }}
                   name="pwd"
+                  onChange={(event) => setPassword(event.target.value)}
                   id="pwd"
                 />
                 <a
-                  href="sforgot.html"
+                  // href="sforgot.html"
                   style={{
                     position: 'relative',
                     left: '560px',
@@ -77,6 +113,11 @@ function StudentLogin() {
                 >
                   forgot password?
                 </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p style={{ textAlign: 'center' }}>{err}</p>
               </td>
             </tr>
             <tr>
@@ -95,7 +136,8 @@ function StudentLogin() {
               <td colSpan="2">
                 <button
                   type="button"
-                  onClick={() => (document.location = 'sd.html')}
+                  onClick={handleLogin}
+                  disabled={loading}
                   style={{
                     position: 'relative',
                     top: '20px',

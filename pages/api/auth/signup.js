@@ -3,8 +3,32 @@ import { saveProfile } from '../../../api-helper/auth/signup';
 
 async function handler(req, res) {
   try {
-    const { email, name, userType, password, id, } = req.body;
-    const insert = await saveProfile({ email, name, userType, password, id });
+    // name, year, gender, cls, dorm, stuMobile, parMobile, password, confPassword,
+    const body = JSON.parse(req.body);
+    const {
+      name,
+      year,
+      gender,
+      cls,
+      dorm,
+      stuMobile,
+      parMobile,
+      password,
+      confPassword,
+      email
+    } = body;
+    const insert = await saveProfile({
+      email,
+      name,
+      year,
+      gender,
+      cls,
+      dorm,
+      stuMobile,
+      parMobile,
+      password,
+      confPassword,
+    });
     if (insert) {
       return res.status(200).json({
         message: 'Success',
