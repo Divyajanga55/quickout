@@ -2,6 +2,7 @@ import clientPromise from '../../mongodb/connection';
 
 async function saveLeave(data = {}) {
   const {
+    email,
     name,
     id,
     gender,
@@ -10,8 +11,7 @@ async function saveLeave(data = {}) {
     dorm,
     outpassType,
     reason,
-    caretaker,
-    warden,
+    applyFor,
     date,
     stuMobile,
     prtMobile,
@@ -21,6 +21,7 @@ async function saveLeave(data = {}) {
   const db = client.db('quickout');
   const leaveCollec = db.collection('leavse');
   return leaveCollec.insertOne({
+    email,
     name,
     id,
     gender,
@@ -29,8 +30,7 @@ async function saveLeave(data = {}) {
     dorm,
     outpassType,
     reason,
-    caretaker,
-    warden,
+    applyFor,
     date,
     stuMobile,
     prtMobile,

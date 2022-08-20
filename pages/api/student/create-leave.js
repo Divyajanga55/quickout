@@ -2,8 +2,12 @@ import { onlyPost } from '../../../utils/backend-helpers';
 import { saveLeave } from '../../../api-helper/student/create-leave';
 
 async function handler(req, res) {
+  const body = JSON.parse(req.body);
+  const email = req.cookies['QUICKOUT-TOKEN'];
+  // console.log('email-->', email);
   try {
     const {
+      email,
       name,
       id,
       gender,
@@ -12,14 +16,14 @@ async function handler(req, res) {
       dorm,
       outpassType,
       reason,
-      caretaker,
-      warden,
+      applyFor,
       date,
       stuMobile,
       prtMobile,
       numDays,
-    } = req.body;
+    } = body;
     const insert = await saveLeave({
+      email,
       name,
       id,
       gender,
@@ -28,8 +32,7 @@ async function handler(req, res) {
       dorm,
       outpassType,
       reason,
-      caretaker,
-      warden,
+      applyFor,
       date,
       stuMobile,
       prtMobile,
