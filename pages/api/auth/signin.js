@@ -5,8 +5,8 @@ import { validateEmailPass } from '../../../api-helper/auth/signin';
 
 async function handler(req, res) {
   try {
-    const body = req.body;
-    // const body = JSON.parse(req.body);
+    // const body = req.body;
+    const body = JSON.parse(req.body);
     const { email, password } = body;
     const user = await validateEmailPass({ email });
     if (user) {

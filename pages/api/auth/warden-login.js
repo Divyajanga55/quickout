@@ -5,8 +5,8 @@ import { validateEmailPassWarden } from '../../../api-helper/auth/warden-login';
 
 async function handler(req, res) {
   try {
-    // const body = JSON.parse(req.body);
-    const body = req.body;
+    const body = JSON.parse(req.body);
+    // const body = req.body;
     const { email, password } = body;
     const user = await validateEmailPassWarden({ email });
     if (user) {

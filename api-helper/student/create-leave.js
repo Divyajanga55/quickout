@@ -24,7 +24,7 @@ async function saveLeave(data = {}) {
     email,
     name,
     id,
-    gender,
+    gender: (gender || '').toLowerCase(),
     year,
     className,
     dorm,

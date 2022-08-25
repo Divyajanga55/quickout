@@ -5,8 +5,8 @@ import { validateEmailPassCareTaker } from '../../../api-helper/auth/care-taker-
 
 async function handler(req, res) {
   try {
-    // const body = JSON.parse(req.body);
-    const body = req.body
+    const body = JSON.parse(req.body);
+    // const body = req.body
     const { email, password } = body;
     const user = await validateEmailPassCareTaker({ email });
     if (user) {

@@ -106,8 +106,8 @@ POST http://localhost:3000/api/auth/care-taker-login
 content-type: application/json
 
 {
-    "email": "caretaker1@gmail.com",
-    "password": "caretaker123"
+    "email": "caretaker2@gmail.com",
+    "password": "caretaker1234"
 }
 
 
@@ -117,8 +117,8 @@ POST http://localhost:3000/api/auth/warden-login
 content-type: application/json
 
 {
-    "email": "warden1@gmail.com",
-    "password": "warden123"
+    "email": "warden2@gmail.com",
+    "password": "warden1234"
 }
 
 ###
@@ -128,3 +128,31 @@ content-type: application/json
 
 
 ###
+
+GET http://localhost:3000/api/caretaker/get-leaves
+content-type: application/json
+
+###
+
+GET http://localhost:3000/api/warden/get-leaves
+content-type: application/json
+
+###
+
+POST http://localhost:3000/api/caretaker/accept-reject
+content-type: application/json
+
+{
+    "id": "6300ed23ade4ecacf4f95201",
+    "status": true
+}
+
+###
+
+POST http://localhost:3000/api/warden/accept-reject
+content-type: application/json
+
+{
+    "id": "6300ecbdade4ecacf4f95200",
+    "status": false
+}
