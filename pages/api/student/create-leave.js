@@ -4,10 +4,14 @@ import { saveLeave } from '../../../api-helper/student/create-leave';
 async function handler(req, res) {
   const body = JSON.parse(req.body);
   const email = req.cookies['QUICKOUT-TOKEN'];
+  if(!email) {
+    return res.status(502).json({
+      message: 'Not logged in',
+    });
+  }
   // console.log('email-->', email);
   try {
     const {
-      email,
       name,
       id,
       gender,

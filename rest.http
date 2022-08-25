@@ -34,6 +34,20 @@ content-type: application/json
 
 ###
 
+GET http://localhost:3000/api/auth/signout
+
+###
+
+POST http://localhost:3000/api/auth/signin
+content-type: application/json
+
+{
+    "email": "divyajanga55@gmail.com",
+    "password": "divya@55"
+}
+
+###
+
 POST http://localhost:3000/api/auth/signup
 content-type: application/json
 
@@ -84,3 +98,33 @@ content-type: application/json
     "prtMobile": "8123123923",
     "numDays": "1"
 }
+
+
+###
+
+POST http://localhost:3000/api/auth/care-taker-login
+content-type: application/json
+
+{
+    "email": "caretaker1@gmail.com",
+    "password": "caretaker123"
+}
+
+
+###
+
+POST http://localhost:3000/api/auth/warden-login
+content-type: application/json
+
+{
+    "email": "warden1@gmail.com",
+    "password": "warden123"
+}
+
+###
+
+GET http://localhost:3000/api/student/get-leaves
+content-type: application/json
+
+
+###

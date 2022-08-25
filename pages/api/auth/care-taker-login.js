@@ -1,14 +1,14 @@
 import { onlyPost } from '../../../utils/backend-helpers';
 import { serialize } from 'cookie';
 
-import { validateEmailPass } from '../../../api-helper/auth/signin';
+import { validateEmailPassCareTaker } from '../../../api-helper/auth/care-taker-login';
 
 async function handler(req, res) {
   try {
-    const body = req.body;
     // const body = JSON.parse(req.body);
+    const body = req.body
     const { email, password } = body;
-    const user = await validateEmailPass({ email });
+    const user = await validateEmailPassCareTaker({ email });
     if (user) {
       if (password === user.password) {
         res.setHeader(
